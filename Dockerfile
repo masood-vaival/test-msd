@@ -15,7 +15,7 @@ RUN buildDeps='curl gcc make autoconf libc-dev zlib1g-dev pkg-config' \
     && apt-get update \
     && apt-get install --no-install-recommends $buildDeps --no-install-suggests -q -y gnupg2 dirmngr wget apt-transport-https lsb-release ca-certificates \
     && curl -fsSL https://nginx.org/keys/nginx_signing.key | apt-key add - \
-    && echo "deb https://nginx.org/packages/debian/ $(lsb_release -cs) nginx" | sudo tee /etc/apt/sources.list.d/nginx.list \
+    && echo "deb https://nginx.org/packages/debian/ $(lsb_release -cs) nginx" | tee /etc/apt/sources.list.d/nginx.list \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -q -y \
     apt-utils \
