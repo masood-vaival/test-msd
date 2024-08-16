@@ -17,10 +17,8 @@ RUN buildDeps='curl gcc make autoconf libc-dev zlib1g-dev pkg-config' \
     NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
 	  found=''; \
 	  for server in \
-          hkps://keys.openpgp.org \
+                  hkps://keys.openpgp.org \
 		  hkp://keyserver.ubuntu.com \
-		  hkp://p80.pool.sks-keyservers.net:80 \
-		  pgp.mit.edu \
 	  ; do \
 		  echo "Fetching GPG key $NGINX_GPGKEY from $server"; \
 		  apt-key adv --batch --keyserver "$server" --keyserver-options timeout=10 --recv-keys "$NGINX_GPGKEY" && found=yes && break; \
