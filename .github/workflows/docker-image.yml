@@ -16,4 +16,4 @@ jobs:
 
     - name: Build the Docker image
       run: |
-        docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+        docker build --progress=plain --file Dockerfile --tag my-image-name:$(date +%s) .

@@ -10,13 +10,11 @@ ENV fpm_conf /etc/php/7.4/fpm/pool.d/www.conf
 ENV COMPOSER_VERSION 1.10.22
 
 # Install Basic Requirements
-RUN buildDeps='curl gcc make autoconf libc-dev zlib1g-dev pkg-config' \
-    && set -x \
+RUN set -ex \
+    && buildDeps='curl gcc make autoconf libc-dev zlib1g-dev pkg-config' \
     && apt-get update \
     && apt-get install --no-install-recommends -q -y $buildDeps gnupg2 dirmngr wget apt-transport-https lsb-release ca-certificates \
-    && \
-    # Directly download and add the NGINX GPG key
-    curl -fsSL https://nginx.org/keys/nginx_signing.key | apt-key add - \
+    && curl -fsSL https://nginx.org/keys/nginx_signing.key | apt-key add - \
     && echo "deb http://nginx.org/packages/mainline/debian/ buster nginx" >> /etc/apt/sources.list \
     && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list \
