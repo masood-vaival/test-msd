@@ -24,7 +24,7 @@ RUN buildDeps='curl gcc make autoconf libc-dev zlib1g-dev pkg-config' \
     && echo "deb https://nginx.org/packages/debian/ $(lsb_release -cs) nginx" | tee /etc/apt/sources.list.d/nginx.list \
     && echo "deb http://deb.debian.org/debian buster-backports main" | tee /etc/apt/sources.list.d/buster-backports.list \
     && apt-get update \
-    && apt-get install -t buster-backports --no-install-recommends --no-install-suggests -q -y \
+    && apt-get install --no-install-recommends --no-install-suggests -q -y \
         php7.4-fpm \
         php7.4-cli \
         php7.4-bcmath \
@@ -43,7 +43,6 @@ RUN buildDeps='curl gcc make autoconf libc-dev zlib1g-dev pkg-config' \
         php7.4-intl \
         php7.4-xml \
         php-pear \
-    && apt-get install --no-install-recommends --no-install-suggests -q -y \
         apt-utils \
         nano \
         zip \
